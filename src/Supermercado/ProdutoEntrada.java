@@ -1,14 +1,14 @@
+// ProdutoEntrada.java
 package Supermercado;
 
-public class ProdutoEntrada {
-        int quantEntrada=0;
-        String entrada;
+public class ProdutoEntrada extends Produto {
+    public ProdutoEntrada(String nomeProduto, int quantidade) {
+        super(nomeProduto, quantidade);
+    }
 
-
-        void imprimirquantEntrada(){
-            System.out.println(this.quantEntrada);
-
-
-        }
-
+    @Override
+    public String getTipoProduto() {
+        return "Entrada";
+    }
 }
+

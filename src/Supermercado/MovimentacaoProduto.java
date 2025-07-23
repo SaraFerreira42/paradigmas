@@ -1,35 +1,26 @@
+// MovimentacaoProduto.java
 package Supermercado;
 
 public class MovimentacaoProduto {
 
-    void entrar (ProdutoEntrada entrada,int quantidade) {
-
-    int quantAtual = entrada.quantEntrada;
-    int novaQuant = quantAtual + quantidade;
-    entrada.quantEntrada = novaQuant;
-
+    void entrar(EstoqueProduto estoque, int quantidade) {
+        estoque.quantidade += quantidade;
+        System.out.println("Entrada realizada. Estoque agora tem: " + estoque.quantidade + " " + estoque.nomeProduto);
     }
 
-    void sair(ProdutoSaida saida, EstoqueProduto estoque, int quantidade) {
-        if (estoque.quantProduto < quantidade) {
-            System.out.println("QUANTIDADE INSUFICIENTE DE PRODUTO PARA SAIR");
-            System.out.println("QUANTIDADE DISPONÍVEL NO ESTOQUE: " + estoque.quantProduto);
+    void sair(EstoqueProduto estoque, int quantidade) {
+        if (estoque.quantidade < quantidade) {
+            System.out.println("QUANTIDADE INSUFICIENTE. Estoque atual: " + estoque.quantidade);
         } else {
-            estoque.quantProduto -= quantidade;
-            saida.quantSaida += quantidade;
-            System.out.println("SAÍDA REALIZADA. ESTOQUE ATUAL: " + estoque.quantProduto);
+            estoque.quantidade -= quantidade;
+            System.out.println("Saída realizada. Estoque agora tem: " + estoque.quantidade);
         }
     }
 
-
-    void verificar(EstoqueProduto estoque, ProdutoEntrada entrada, ProdutoSaida saida) {
-        int atualEstoque = entrada.quantEntrada - saida.quantSaida;
-        estoque.quantProduto = atualEstoque;
-        System.out.println("Estoque atualizado: " + atualEstoque);
+    void verificar(EstoqueProduto estoque) {
+        System.out.println("Estoque atual do produto " + estoque.nomeProduto + ": " + estoque.quantidade);
     }
-
-
-    }
+}
 
 
 
